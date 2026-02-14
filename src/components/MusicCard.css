@@ -1,0 +1,151 @@
+.music-card {
+    display: flex;
+    flex-direction: row;
+    /* Horizontal layout */
+    align-items: center;
+    padding: 1.25rem;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(29, 185, 84, 0.05), rgba(0, 0, 0, 0));
+    /* Subtle green tint */
+    background-color: #121212;
+    border-color: rgba(255, 255, 255, 0.08);
+    gap: 1.25rem;
+}
+
+.music-card:hover {
+    border-color: #1DB954;
+}
+
+.music-icon {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    color: #1DB954;
+    z-index: 5;
+    opacity: 0.8;
+}
+
+.track-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    /* Enable truncation in flex item */
+    position: relative;
+    z-index: 2;
+}
+
+.status {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #1DB954;
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 2;
+}
+
+.sc-playing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Visualizer Bars */
+.bar {
+    width: 2px;
+    background-color: #1DB954;
+    animation: dance 1s infinite ease-in-out;
+}
+
+.bar.n1 {
+    height: 10px;
+    animation-delay: 0s;
+}
+
+.bar.n2 {
+    height: 6px;
+    animation-delay: 0.2s;
+}
+
+.bar.n3 {
+    height: 12px;
+    animation-delay: 0.4s;
+}
+
+@keyframes dance {
+
+    0%,
+    100% {
+        height: 4px;
+    }
+
+    50% {
+        height: 12px;
+    }
+}
+
+.track-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.track-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 2;
+    margin-bottom: 2px;
+}
+
+.artist-name {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 2;
+}
+
+/* Album Art - Visible Square on Side */
+.album-art {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    /* Slight rounded corners like Spotify */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    transform: none;
+    opacity: 1;
+    filter: none;
+    inset: auto;
+}
+
+.album-art::after {
+    display: none;
+    /* Remove overlay */
+}
+
+.music-card:hover .album-art {
+    transform: scale(1.02);
+}

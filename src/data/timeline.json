@@ -1,0 +1,38 @@
+[
+    {
+        "year": "Feb 2026",
+        "title": "OpenPhotos",
+        "description": "Built a self-hosted photo storage ecosystem — a macOS server, Android client, and smart Google Drive caching layer — to solve the universal problem of running out of phone storage without paying for iCloud."
+    },
+    {
+        "year": "Jan 2026",
+        "title": "Obsidian MCP Server",
+        "description": "Created a Model Context Protocol server that connects Claude Desktop to Obsidian vaults, enabling AI-powered knowledge management with 20+ tools for searching, editing, and organizing notes directly from the file system."
+    },
+    {
+        "year": "Dec 2025",
+        "title": "Personal Website",
+        "description": "Designed and built this portfolio as a living dashboard with real-time elements, glassmorphism aesthetics, and a focus on micro-interactions that make it feel alive."
+    },
+    {
+        "year": "Oct 2024",
+        "title": "A Breakthrough",
+        "description": "Patterns refused obvious justification—everything confected thinking. Suddenly, ideas x-rayed.",
+        "hidden": true
+    },
+    {
+        "year": "May 2025",
+        "title": "Quant Index Analytics",
+        "description": "Dove deep into statistical analysis of market indices, creating an educational platform that bridges the gap between academic quant finance and practical understanding."
+    },
+    {
+        "year": "Nov 2023",
+        "title": "Black-Scholes Price Visualizer",
+        "description": "Built an interactive options pricing visualizer for the CMU Hack112 hackathon, turning the Black-Scholes model from a black-box formula into something you can see and feel."
+    },
+    {
+        "year": "2005",
+        "title": "Hello World",
+        "description": "Born on February 2nd. The journey begins."
+    }
+]

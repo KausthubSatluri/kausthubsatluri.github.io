@@ -1,0 +1,180 @@
+.final-message-page {
+    height: 100vh;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Frosted gradient overlay at the top — sits over scrolling text */
+.frost-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.95) 30%,
+        rgba(0, 0, 0, 0.8) 50%,
+        rgba(0, 0, 0, 0.5) 70%,
+        rgba(0, 0, 0, 0.2) 85%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.message-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 2rem 0 1rem;
+    z-index: 20;
+}
+
+.reading-time {
+    color: rgba(255, 182, 193, 0.5);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+}
+
+.pause-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 182, 193, 0.25);
+    color: rgba(255, 182, 193, 0.6);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pause-btn:hover {
+    color: #FFB6C1;
+    border-color: rgba(255, 182, 193, 0.5);
+    background: rgba(255, 182, 193, 0.08);
+}
+
+.message-container {
+    flex: 1;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    overflow-y: auto;
+    padding: 0 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 182, 193, 0.15) transparent;
+}
+
+.message-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.message-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.message-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 182, 193, 0.15);
+    border-radius: 2px;
+}
+
+/* Push initial text down to ~50vh so the first line starts at center */
+.message-spacer {
+    height: 50vh;
+    flex-shrink: 0;
+}
+
+/* Bottom spacer so the last line can also sit at center */
+.message-spacer-bottom {
+    height: 40vh;
+    flex-shrink: 0;
+}
+
+.scroll-anchor {
+    height: 1px;
+    width: 1px;
+}
+
+.message-text {
+    color: #FFB6C1;
+    font-size: 1.5rem;
+    line-height: 2;
+    font-family: 'Courier New', 'Courier', monospace;
+    font-weight: 600;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.cursor {
+    color: #FFB6C1;
+    animation: blink 0.8s infinite;
+    font-weight: 100;
+}
+
+.cursor.paused {
+    opacity: 1;
+    animation: none;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.message-footer {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.poem-image {
+    max-width: 500px;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(255, 182, 193, 0.1);
+}
+
+.replay-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    color: #FFB6C1;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.replay-btn:hover {
+    background: rgba(255, 182, 193, 0.1);
+    border-color: rgba(255, 182, 193, 0.5);
+}
+
+@media (max-width: 768px) {
+    .message-text {
+        font-size: 1.25rem;
+        line-height: 1.8;
+    }
+
+    .final-message-page {
+        padding: 0;
+    }
+
+    .frost-overlay {
+        height: 150px;
+    }
+}

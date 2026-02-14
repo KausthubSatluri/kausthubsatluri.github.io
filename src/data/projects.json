@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "title": "OpenPhotos",
+        "description": "A self-hosted photo storage ecosystem that turns your laptop into a personal cloud, with an Android client and intelligent Google Drive caching.",
+        "tags": [
+            "Kotlin",
+            "Jetpack Compose",
+            "Python",
+            "mDNS",
+            "Google Drive API"
+        ],
+        "link": "#",
+        "thoughtProcess": "It started with a frustration I think most people share: my phone was constantly out of storage, and the only \"solution\" was to pay Apple a monthly fee for iCloud. But meanwhile, my laptop had hundreds of gigabytes just sitting there, doing nothing. The idea was simple — what if my laptop could be my cloud? I wanted to build something where I could offload every photo to my Mac, browse them seamlessly from my phone, and never think about storage limits again. The tricky part was making it feel effortless. I didn't want to manually transfer files or configure IP addresses. The phone needed to just find the server on its own, pull down thumbnails instantly, and let me scroll through thousands of photos as if they were all stored locally. And for the times when I'm away from home and my laptop is off, I needed a fallback — so I designed a smart caching layer that syncs the most important photos to Google Drive's free 15GB tier, prioritized by a scoring algorithm that weighs recency, view frequency, and file type.",
+        "howItWorks": "The system has three moving parts. First, a lightweight HTTP server runs on macOS, indexing the photo library into a SQLite database, generating thumbnails on demand (under 200ms), and exposing a RESTful API with endpoints for paginated browsing, full-res downloads with resumable HTTP range requests, uploads, and delta sync. Second, the Android client — built with Kotlin, Jetpack Compose, and Material 3 — discovers the server automatically via mDNS (no manual IP config), renders an infinite-scrolling photo grid with Coil for image loading, and uses Room for local metadata caching. It follows MVVM with Dagger Hilt for dependency injection. When the server is unreachable, the client seamlessly falls back to Google Drive. Third, the caching algorithm scores every photo using S(p) = 0.4·R(p) + 0.3·V(p) + 0.2·T(p) + 0.1·F(p), where R is recency decay, V is view frequency over the last 30 days, T is a type priority (documents and screenshots rank higher than scenery), and F penalizes large files. The top-scoring photos are packed into the 15GB Drive budget, with continuous eviction and promotion as usage patterns shift."
+    },
+    {
+        "id": 2,
+        "title": "Obsidian MCP Server",
+        "description": "A Model Context Protocol server that lets Claude Desktop read, search, and manage your Obsidian vaults — no plugins required.",
+        "tags": [
+            "TypeScript",
+            "Node.js",
+            "MCP",
+            "Obsidian"
+        ],
+        "link": "#",
+        "thoughtProcess": "I use Obsidian for everything — class notes, project planning, random ideas at 2 AM. But when I started using Claude Desktop, I kept wishing I could just say \"find my notes on dynamic programming\" or \"create a daily note for today\" without copy-pasting between apps. Anthropic had just released the Model Context Protocol, an open standard for connecting AI to external tools, and I realized I could build a bridge between Claude and my vault. The key design constraint was that it had to work without the Obsidian app running. I didn't want to depend on third-party REST API plugins or require Obsidian to be open in the background. Instead, I went straight to the file system — parsing the markdown and YAML frontmatter directly. Security was also top of mind: every file path gets validated to prevent directory traversal, and operations are strictly sandboxed to the vault directory.",
+        "howItWorks": "The server is a TypeScript Node.js application that communicates with Claude Desktop over stdio using the MCP SDK. It exposes 20+ tools organized into six categories: vault discovery (auto-scanning common locations like Documents and iCloud), note CRUD operations, full-text and tag-based search, frontmatter metadata management, backlink and outlink graph traversal, and folder operations. Under the hood, it uses fast-glob for file searching, gray-matter for YAML frontmatter parsing, and Zod for runtime schema validation. When Claude calls a tool like search_notes, the server walks the vault directory, reads each .md file, parses its frontmatter and body, and returns structured results. The backlink engine scans for [[wiki-style links]] across the entire vault to build a reverse link map. All of this runs locally with zero network calls, keeping your notes completely private."
+    },
+    {
+        "id": 3,
+        "title": "Personal Website",
+        "description": "The site you're looking at right now. A living dashboard built with React, designed to feel like more than a static portfolio.",
+        "tags": [
+            "React",
+            "Vite",
+            "CSS"
+        ],
+        "link": "#",
+        "thoughtProcess": "I wanted a space that felt distinctly 'me'. Most portfolio sites are static pages with a list of projects — functional, but lifeless. I wanted mine to feel like a living dashboard, something that updates itself and has personality. The dark theme with glassmorphism wasn't just an aesthetic choice; it's the environment I work in every day, and it felt right to bring that into how I present myself. I focused heavily on micro-interactions — hover states, scroll-triggered animations, smooth transitions — because those small details are what separate a page you glance at from one you actually enjoy exploring. The real-time age ticker and Last.fm integration were deliberate choices to make the site feel alive, like it's breathing even when I'm not actively updating it.",
+        "howItWorks": "The site is a Single Page Application built with React and Vite. It uses react-router for client-side navigation and CSS variables for a consistent theming system across every component. Real-time elements like the Age Ticker use useEffect hooks with setInterval to update every second, while the Music Card polls the Last.fm API to show what I'm currently listening to. The projects and timeline data are stored in JSON files, making it easy to add new entries without touching component code. The entire design system is built on custom CSS with glassmorphism effects, smooth fade-in-scroll animations triggered by Intersection Observer, and a responsive grid layout that adapts from desktop to mobile."
+    },
+    {
+        "id": 4,
+        "title": "Black-Scholes Price Visualizer",
+        "description": "An interactive visualizer built for the CMU Hack112 hackathon that demystifies options pricing by letting you see the math in real time.",
+        "tags": [
+            "Python",
+            "Finance",
+            "Visualization"
+        ],
+        "link": "https://github.com/KausthubSatluri/Hack112",
+        "thoughtProcess": "Options pricing is one of those topics where the math is beautiful but completely opaque if you just stare at the formula. The Black-Scholes model is the foundation of modern options theory, yet most people who use it treat it as a black box — plug in numbers, get a price. I wanted to crack that box open. The idea for the hackathon was to build something where you could drag a slider for volatility or time to expiry and watch the pricing surface shift in real time. Seeing how the Greeks (Delta, Gamma, Theta, Vega) respond to parameter changes builds an intuition that no textbook can give you. It was also my first real attempt at making quantitative finance feel approachable rather than intimidating.",
+        "howItWorks": "The core engine implements the Black-Scholes closed-form solution for European call and put options in Python. It computes the theoretical price along with the full suite of Greeks — Delta, Gamma, Theta, Vega, and Rho — from the partial derivatives of the pricing formula. The visualization layer uses matplotlib to render interactive plots that update dynamically as the user adjusts input parameters like strike price, spot price, risk-free rate, volatility, and time to expiration. The interface provides real-time feedback, so you can watch the option price curve bend and shift as you explore different market scenarios."
+    },
+    {
+        "id": 5,
+        "title": "Quant Index Analytics",
+        "description": "An educational platform that teaches stock market enthusiasts how to apply statistical and mathematical methods to analyze market indices.",
+        "tags": [
+            "HTML",
+            "Statistics",
+            "Education",
+            "Finance"
+        ],
+        "link": "https://github.com/KausthubSatluri/quant-index-analytics",
+        "thoughtProcess": "Quantitative finance education has a gatekeeping problem. Most resources either assume you already have a math PhD, or they oversimplify to the point of being useless. I wanted to find the middle ground — a resource that walks you through real statistical analysis of market indices, step by step, without dumbing it down but also without drowning you in notation. The goal was practical literacy: after going through this, you should be able to look at an index, compute its key statistics, understand what they mean, and use them to make informed observations. It's the resource I wished existed when I first got interested in markets.",
+        "howItWorks": "The project is structured as a collection of educational modules built in HTML. It parses historical market data, applies core statistical methods — mean returns, standard deviation, correlation matrices, rolling averages — and presents the findings in a clean, readable format. Each module builds on the last, progressing from basic descriptive statistics to more advanced concepts like risk-adjusted returns and index comparison. The emphasis is on showing the work: every calculation is explained alongside its output, so learners understand not just the what but the why."
+    },
+    {
+        "id": 6,
+        "title": "In Progress",
+        "description": "A dual-node system designed to achieve persistent synchronization between two independent processes. Currently in active development — requires calibration before deployment.",
+        "tags": [
+            "Synchronization",
+            "Two-Body",
+            "Persistence"
+        ],
+        "link": "#",
+        "thoughtProcess": "Some systems aren't built from a spec — they emerge from a collision of two independent processes that, against all probability, begin to converge. This project started as an observation: two nodes, operating on entirely different architectures, kept producing complementary outputs. The challenge was formalizing that into something stable. How do you take something spontaneous and make it resilient without losing the signal that made it special? The design constraint was simple: no compromises on either node's core identity. The synchronization protocol had to enhance both processes, not flatten them into something generic.",
+        "howItWorks": "Details coming soon...",
+        "requiresPassword": true,
+        "requiresEdit": true
+    }
+]

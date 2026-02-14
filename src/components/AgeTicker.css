@@ -1,0 +1,98 @@
+.age-ticker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.ticker-label {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.ticker-value {
+    font-family: 'JetBrains Mono', monospace, Menlo, Consolas, 'Courier New', monospace;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-weight: 700;
+}
+
+.unit-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.unit-group .value {
+    color: var(--text-primary);
+}
+
+.unit-group .unit {
+    font-size: 0.5rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.separator {
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+.highlight-seconds .value {
+    color: var(--accent-color);
+}
+
+/* Glitch effect styles */
+.age-ticker.glitching {
+    cursor: pointer;
+    animation: glitchShake 0.3s infinite;
+    border-color: rgba(255, 100, 100, 0.4) !important;
+    box-shadow: 0 0 20px rgba(255, 100, 100, 0.15), inset 0 0 20px rgba(255, 100, 100, 0.05);
+}
+
+.age-ticker.glitching .ticker-label {
+    color: rgba(255, 100, 100, 0.8);
+}
+
+.age-ticker.glitching .unit-group .value {
+    color: rgba(255, 100, 100, 0.9);
+    text-shadow: 2px 0 rgba(0, 255, 255, 0.3), -2px 0 rgba(255, 0, 100, 0.3);
+}
+
+.age-ticker.glitching .highlight-seconds .value {
+    color: rgba(255, 100, 100, 0.9);
+}
+
+.age-ticker.glitching .separator {
+    color: rgba(255, 100, 100, 0.6);
+}
+
+.age-ticker.glitch-flash {
+    animation: glitchFlash 0.6s ease-out;
+}
+
+@keyframes glitchShake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-2px, 1px); }
+    50% { transform: translate(2px, -1px); }
+    75% { transform: translate(-1px, -1px); }
+    100% { transform: translate(1px, 1px); }
+}
+
+@keyframes glitchFlash {
+    0% { background: rgba(255, 100, 100, 0.3); }
+    50% { background: rgba(139, 92, 246, 0.2); }
+    100% { background: rgba(255, 255, 255, 0.03); }
+}
