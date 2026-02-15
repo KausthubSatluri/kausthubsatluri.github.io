@@ -1,5 +1,5 @@
-const API_KEY = import.meta.env.VITE_LASTFM_API_KEY;
-const USERNAME = import.meta.env.VITE_LASTFM_USERNAME;
+const API_KEY = '0b4c2c6a4310e6f08797a0084e1c1bb0';
+const USERNAME = 'kaikoo05';
 const BASE_URL = 'https://ws.audioscrobbler.com/2.0/';
 
 export const getRecentTracks = async () => {
