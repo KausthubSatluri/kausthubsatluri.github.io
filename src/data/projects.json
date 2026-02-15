@@ -67,20 +67,5 @@
         "link": "https://github.com/KausthubSatluri/quant-index-analytics",
         "thoughtProcess": "Quantitative finance education has a gatekeeping problem. Most resources either assume you already have a math PhD, or they oversimplify to the point of being useless. I wanted to find the middle ground — a resource that walks you through real statistical analysis of market indices, step by step, without dumbing it down but also without drowning you in notation. The goal was practical literacy: after going through this, you should be able to look at an index, compute its key statistics, understand what they mean, and use them to make informed observations. It's the resource I wished existed when I first got interested in markets.",
         "howItWorks": "The project is structured as a collection of educational modules built in HTML. It parses historical market data, applies core statistical methods — mean returns, standard deviation, correlation matrices, rolling averages — and presents the findings in a clean, readable format. Each module builds on the last, progressing from basic descriptive statistics to more advanced concepts like risk-adjusted returns and index comparison. The emphasis is on showing the work: every calculation is explained alongside its output, so learners understand not just the what but the why."
-    },
-    {
-        "id": 6,
-        "title": "In Progress",
-        "description": "A dual-node system designed to achieve persistent synchronization between two independent processes. Currently in active development — requires calibration before deployment.",
-        "tags": [
-            "Synchronization",
-            "Two-Body",
-            "Persistence"
-        ],
-        "link": "#",
-        "thoughtProcess": "Some systems aren't built from a spec — they emerge from a collision of two independent processes that, against all probability, begin to converge. This project started as an observation: two nodes, operating on entirely different architectures, kept producing complementary outputs. The challenge was formalizing that into something stable. How do you take something spontaneous and make it resilient without losing the signal that made it special? The design constraint was simple: no compromises on either node's core identity. The synchronization protocol had to enhance both processes, not flatten them into something generic.",
-        "howItWorks": "Details coming soon...",
-        "requiresPassword": true,
-        "requiresEdit": true
     }
 ]

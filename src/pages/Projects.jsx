@@ -15,10 +15,7 @@ const Projects = () => {
                 {projectsData.map((project) => (
                     <article key={project.id} className="project-card">
                         <Link
-                            to={project.requiresPassword && localStorage.getItem('project6Unlocked') !== 'true'
-                                ? `/projects/${project.id}/password`
-                                : `/projects/${project.id}`
-                            }
+                            to={`/projects/${project.id}`}
                             className="card-link-wrapper"
                         >
                             <div className="card-content">
@@ -29,8 +26,7 @@ const Projects = () => {
                                         <span key={tag} className="tag">{tag}</span>
                                     ))}
                                 </div>
-                                {/* Stop propagation to prevent navigation when clicking the external link */}
-                                {project.link !== '#' && !project.requiresPassword && (
+                                {project.link !== '#' && (
                                     <object>
                                         <a
                                             href={project.link}
