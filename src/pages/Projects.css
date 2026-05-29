@@ -61,8 +61,8 @@
 .tag {
     font-size: 0.8rem;
     padding: 0.2rem 0.6rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
+    background: var(--overlay-light);
+    border-radius: var(--radius-lg);
     color: var(--text-secondary);
 }
 

@@ -1,5 +1,5 @@
 .footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--overlay-light);
     padding: 2rem 0;
     margin-top: auto;
     color: var(--text-secondary);
@@ -57,7 +57,7 @@
     white-space: nowrap;
     animation: fadeIn 0.3s ease;
     background: rgba(30, 30, 30, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--overlay-medium);
     border-radius: var(--radius-md);
     backdrop-filter: blur(10px);
     font-size: 0.85rem;

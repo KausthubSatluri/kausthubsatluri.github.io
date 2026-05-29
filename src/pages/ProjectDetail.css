@@ -30,7 +30,7 @@
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 1rem;
-    background: linear-gradient(to right, #fff, #a1a1a1);
+    background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -44,12 +44,12 @@
 }
 
 .tag {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--overlay-medium);
     padding: 0.25rem 0.75rem;
     border-radius: 100px;
     font-size: 0.85rem;
     color: var(--text-secondary);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--overlay-light);
 }
 
 .project-description {
@@ -128,7 +128,7 @@
 .form-input {
     width: 100%;
     padding: 0.8rem 1rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--overlay-light);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     color: var(--text-primary);
@@ -176,7 +176,7 @@
 
 .divider {
     height: 1px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--overlay-medium);
     margin: 1.5rem 0;
 }
 

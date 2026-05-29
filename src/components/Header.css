@@ -2,9 +2,10 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(13, 13, 13, 0.8);
+    background: var(--bg-color);
+    opacity: 0.95;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-color);
     padding: 1rem 0;
 }
 
@@ -21,7 +22,7 @@
     font-weight: 700;
     font-size: 1.5rem;
     letter-spacing: -0.05em;
-    background: linear-gradient(to right, #fff, #a1a1a1);
+    background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -30,6 +31,7 @@
 .nav {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-link {
@@ -53,4 +55,21 @@
     height: 2px;
     background-color: var(--accent-color);
     border-radius: 2px;
+}
+
+.theme-selector {
+    background: var(--surface-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.theme-selector:hover {
+    border-color: var(--accent-color);
 }

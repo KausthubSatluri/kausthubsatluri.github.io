@@ -21,7 +21,7 @@
     font-weight: 800;
     line-height: 1;
     color: var(--text-primary);
-    background: linear-gradient(to bottom, #fff, #a1a1a1);
+    background: linear-gradient(to bottom, var(--text-primary), var(--text-secondary));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

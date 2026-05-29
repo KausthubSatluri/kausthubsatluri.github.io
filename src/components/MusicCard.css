@@ -131,7 +131,7 @@
     flex-shrink: 0;
     background-size: cover;
     background-position: center;
-    border-radius: 4px;
+    border-radius: var(--radius-md);
     /* Slight rounded corners like Spotify */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     z-index: 2;

@@ -9,7 +9,7 @@
     font-weight: 800;
     text-align: center;
     margin-bottom: 4rem;
-    background: linear-gradient(to right, #fff, #a1a1a1);
+    background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -29,7 +29,7 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--overlay-medium);
 }
 
 .timeline-item {
@@ -47,7 +47,7 @@
     height: 12px;
     background: var(--color-primary);
     border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 4px var(--overlay-light);
     z-index: 1;
 }
 
@@ -66,9 +66,9 @@
     font-weight: 700;
     color: var(--color-primary);
     margin-bottom: 0.5rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--overlay-light);
     padding: 0.2rem 0.6rem;
-    border-radius: 4px;
+    border-radius: var(--radius-md);
 }
 
 .timeline-title {
