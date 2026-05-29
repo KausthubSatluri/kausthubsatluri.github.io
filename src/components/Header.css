@@ -73,3 +73,64 @@
 .theme-selector:hover {
     border-color: var(--accent-color);
 }
+
+.selectors {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Sidebar Layout Overrides */
+[data-layout="sidebar"] .header {
+    width: 250px;
+    height: 100vh;
+    border-bottom: none;
+    border-right: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+}
+
+[data-layout="sidebar"] .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    padding: 2rem;
+}
+
+[data-layout="sidebar"] .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2rem;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+[data-layout="sidebar"] .selectors {
+    flex-direction: column;
+    margin-top: auto;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    [data-layout="sidebar"] .header {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    [data-layout="sidebar"] .header-container {
+        flex-direction: row;
+        align-items: center;
+        padding: 0 1.5rem;
+    }
+    [data-layout="sidebar"] .nav {
+        flex-direction: row;
+        align-items: center;
+        margin-top: 0;
+        width: auto;
+    }
+    [data-layout="sidebar"] .selectors {
+        flex-direction: row;
+        width: auto;
+        display: none; /* Hide selectors on mobile to save space if needed, or leave flex */
+    }
+}

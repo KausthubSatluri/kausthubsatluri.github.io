@@ -13,3 +13,14 @@
 .container {
     width: 100%;
 }
+
+/* Sidebar Layout */
+[data-layout="sidebar"] .layout {
+    flex-direction: row;
+}
+
+@media (max-width: 768px) {
+    [data-layout="sidebar"] .layout {
+        flex-direction: column;
+    }
+}
