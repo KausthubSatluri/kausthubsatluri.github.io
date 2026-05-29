@@ -190,3 +190,164 @@
         gap: 3rem;
     }
 }
+/* =========================================
+   NEW DEFAULT LAYOUT (Earthy Theme)
+   ========================================= */
+.default-layout-page {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    gap: 4rem;
+}
+
+.default-layout-page .hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0 4rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.default-layout-page .hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.default-layout-page .hero-title-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 5.5rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.default-layout-page .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.default-layout-page .hero-image {
+    flex-shrink: 0;
+}
+
+.default-layout-page .hero-image-placeholder {
+    width: 300px;
+    height: 400px;
+    background-color: var(--surface-color);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.default-layout-page .featured-projects-section {
+    padding: 2rem 0;
+}
+
+.default-layout-page .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.default-layout-page .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.default-layout-page .project-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.default-layout-page .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px var(--accent-glow);
+    border-color: rgba(255,255,255,0.1);
+}
+
+.default-layout-page .project-image-placeholder {
+    height: 160px;
+    background: var(--bg-color);
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+    opacity: 0.5;
+}
+
+.default-layout-page .project-title {
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.default-layout-page .project-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.default-layout-page .view-project {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--text-secondary);
+    align-self: flex-start;
+    padding-bottom: 2px;
+    transition: border-color 0.3s ease;
+}
+
+.default-layout-page .project-card:hover .view-project {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.default-layout-page .more-projects {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.default-layout-page .more-projects a {
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
+}
+
+.default-layout-page .more-projects a:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .default-layout-page .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .default-layout-page .hero-title-serif {
+        font-size: 3.5rem;
+    }
+}
+

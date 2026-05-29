@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLayout } from '../context/LayoutContext';
 import Timeline from '../components/Timeline';
 import AgeTicker from '../components/AgeTicker';
 import ProjectCount from '../components/ProjectCount';
@@ -11,8 +12,46 @@ import '../components/Timeline.css';
 import './Home.css';
 
 const Home = () => {
+    const { layout } = useLayout();
     const birthDate = '2005-02-02T22:25:00';
     const projectCount = projectsData.length;
+
+    if (layout === 'default') {
+        return (
+            <div className="home-page default-layout-page fade-in container">
+                <div className="hero-section">
+                    <div className="hero-content">
+                        <h1 className="hero-title-serif">Liam Carter</h1>
+                        <p className="hero-subtitle">
+                            A Creative Developer crafting thoughtful digital experiences<br />
+                            that bridge design and function with an earthy aesthetic.<br />
+                            Specializing in minimalist design and sustainable code.
+                        </p>
+                    </div>
+                    <div className="hero-image">
+                        <div className="hero-image-placeholder"></div>
+                    </div>
+                </div>
+
+                <div className="featured-projects-section">
+                    <h2 className="section-title">Featured Projects</h2>
+                    <div className="projects-grid">
+                        {projectsData.map((project) => (
+                            <Link to={`/projects/${project.id}`} key={project.id} className="project-card">
+                                <div className="project-image-placeholder"></div>
+                                <h3 className="project-title">{project.title}</h3>
+                                <p className="project-desc">{project.description}</p>
+                                <span className="view-project">View Project</span>
+                            </Link>
+                        ))}
+                    </div>
+                    <div className="more-projects">
+                        <Link to="/projects">More Projects &gt;</Link>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="home-page fade-in">

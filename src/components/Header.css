@@ -134,3 +134,45 @@
         display: none; /* Hide selectors on mobile to save space if needed, or leave flex */
     }
 }
+/* Default Layout Specific Header Styles */
+.header.header-default {
+    background: transparent;
+    border-bottom: none;
+    backdrop-filter: none;
+    padding: 2rem 0;
+}
+
+.header-default .logo {
+    font-family: inherit;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    background: none;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: initial;
+}
+
+.header-default .nav {
+    flex: 1;
+    justify-content: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.cv-link {
+    display: flex;
+    align-items: center;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.cv-link:hover {
+    color: var(--accent-color);
+}
+

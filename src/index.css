@@ -1,15 +1,15 @@
 :root {
-  /* Color Palette - Dark Mode Premium */
-  --bg-color: #0d0d0d;
-  --surface-color: #1a1a1a;
-  --surface-hover: #252525;
-  --text-primary: #ededed;
-  --text-secondary: #a1a1a1;
-  --accent-color: #8b5cf6; /* Violet */
-  --accent-glow: rgba(139, 92, 246, 0.5);
-  --border-color: #333;
-  --overlay-light: rgba(255, 255, 255, 0.05);
-  --overlay-medium: rgba(255, 255, 255, 0.1);
+  /* Color Palette - Earthy Dark */
+  --bg-color: #211d1a;
+  --surface-color: #2c2723;
+  --surface-hover: #38312c;
+  --text-primary: #e8ded1;
+  --text-secondary: #a39b8e;
+  --accent-color: #d98a6c; /* Warm Peach/Orange */
+  --accent-glow: rgba(217, 138, 108, 0.4);
+  --border-color: #3b3530;
+  --overlay-light: rgba(255, 255, 255, 0.03);
+  --overlay-medium: rgba(255, 255, 255, 0.08);
   
   /* Typography */
   --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
