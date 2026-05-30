@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useTheme } from '../context/ThemeContext';
 import { useLayout } from '../context/LayoutContext';
 import './Header.css';
 
 const Header = () => {
     const location = useLocation();
-    const { theme, setTheme } = useTheme();
     const { layout, setLayout } = useLayout();
     const isActive = (path) => location.pathname === path ? 'active' : '';
 
@@ -28,24 +26,13 @@ const Header = () => {
                     
                     {layout !== 'default' && (
                         <div className="selectors">
-                            <select 
-                                className="theme-selector" 
-                                value={theme} 
-                                onChange={(e) => setTheme(e.target.value)}
-                            >
-                                <option value="dark">Dark Theme</option>
-                                <option value="light">Light Theme</option>
-                                <option value="earthy">Earthy Theme</option>
-                            </select>
-                            <select 
-                                className="theme-selector layout-selector" 
-                                value={layout} 
+                            <select
+                                className="theme-selector layout-selector"
+                                value={layout}
                                 onChange={(e) => setLayout(e.target.value)}
                             >
                                 <option value="default">Default Layout</option>
                                 <option value="bento">Bento Box</option>
-                                <option value="sidebar">Sidebar Split</option>
-                                <option value="horizontal">Horizontal Scroll</option>
                             </select>
                         </div>
                     )}
@@ -54,17 +41,9 @@ const Header = () => {
                 {layout === 'default' && (
                     <div className="header-right">
                         <div className="selectors" style={{marginRight: '1rem', display: 'inline-flex'}}>
-                            <select 
-                                className="theme-selector" 
-                                value={theme} 
-                                onChange={(e) => setTheme(e.target.value)}
-                            >
-                                <option value="dark">Dark</option>
-                                <option value="earthy">Earthy</option>
-                            </select>
-                            <select 
-                                className="theme-selector" 
-                                value={layout} 
+                            <select
+                                className="theme-selector"
+                                value={layout}
                                 onChange={(e) => setLayout(e.target.value)}
                             >
                                 <option value="default">Default</option>

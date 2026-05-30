@@ -21,11 +21,11 @@ const Home = () => {
             <div className="home-page default-layout-page fade-in container">
                 <div className="hero-section">
                     <div className="hero-content">
-                        <h1 className="hero-title-serif">Liam Carter</h1>
+                        <h1 className="hero-title-serif">Kausthub Satluri</h1>
                         <p className="hero-subtitle">
-                            A Creative Developer crafting thoughtful digital experiences<br />
-                            that bridge design and function with an earthy aesthetic.<br />
-                            Specializing in minimalist design and sustainable code.
+                            A developer who builds digital experiences that blend<br />
+                            aesthetics with performance — from self-hosted tooling<br />
+                            to quantitative finance and everything in between.
                         </p>
                     </div>
                     <div className="hero-image">

@@ -1,4 +1,9 @@
 :root {
+  /* Tell the browser (and force-dark tools like Dark Reader) this site is
+     already a dark theme, so native controls render dark and extensions
+     leave our palette alone. */
+  color-scheme: dark;
+
   /* Color Palette - Earthy Dark */
   --bg-color: #211d1a;
   --surface-color: #2c2723;
@@ -27,38 +32,6 @@
   --radius-md: 8px;
   --radius-lg: 16px;
   --transition: all 0.3s ease;
-}
-
-[data-theme="light"] {
-  --bg-color: #ffffff;
-  --surface-color: #f7f7f7;
-  --surface-hover: #ebebeb;
-  --text-primary: #1a1a1a;
-  --text-secondary: #595959;
-  --accent-color: #2563eb;
-  --accent-glow: rgba(37, 99, 235, 0.3);
-  --border-color: #e5e5e5;
-  --overlay-light: rgba(0, 0, 0, 0.05);
-  --overlay-medium: rgba(0, 0, 0, 0.1);
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 8px;
-}
-
-[data-theme="earthy"] {
-  --bg-color: #1a1715;
-  --surface-color: #26221f;
-  --surface-hover: #332d29;
-  --text-primary: #e6dfd5;
-  --text-secondary: #a89f91;
-  --accent-color: #7b8e72;
-  --accent-glow: rgba(123, 142, 114, 0.3);
-  --border-color: #403833;
-  --overlay-light: rgba(255, 255, 255, 0.05);
-  --overlay-medium: rgba(255, 255, 255, 0.1);
-  --radius-sm: 12px;
-  --radius-md: 20px;
-  --radius-lg: 30px;
 }
 
 * {
