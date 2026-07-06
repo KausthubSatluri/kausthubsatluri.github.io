@@ -7,8 +7,8 @@ const Projects = () => {
     return (
         <div className="projects-page container fade-in">
             <header className="projects-header">
-                <h1 className="page-title">Selected Works</h1>
-                <p className="page-subtitle">A collection of things I've built and learned from.</p>
+                <h1 className="page-title">Projects</h1>
+                <p className="page-subtitle">Things I've built, with notes on how they work.</p>
             </header>
 
             <div className="projects-grid">
@@ -26,21 +26,18 @@ const Projects = () => {
                                         <span key={tag} className="tag">{tag}</span>
                                     ))}
                                 </div>
-                                {project.link !== '#' && (
-                                    <object>
-                                        <a
-                                            href={project.link}
-                                            className="project-link"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            View Source &rarr;
-                                        </a>
-                                    </object>
-                                )}
                             </div>
                         </Link>
+                        {project.link !== '#' && (
+                            <a
+                                href={project.link}
+                                className="project-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View Source &rarr;
+                            </a>
+                        )}
                     </article>
                 ))}
             </div>

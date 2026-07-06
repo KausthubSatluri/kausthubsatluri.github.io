@@ -43,7 +43,7 @@ const ProjectDetail = () => {
 
                 <div className="project-content">
                     <section className="detail-section">
-                        <h2>The Thought Process</h2>
+                        <h2>Background</h2>
                         <p>{project.thoughtProcess || "Details coming soon..."}</p>
                     </section>
 
@@ -55,7 +55,7 @@ const ProjectDetail = () => {
                     {project.link !== '#' && (
                         <div className="project-actions">
                             <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                                View Source / Live Demo
+                                View Source
                             </a>
                         </div>
                     )}

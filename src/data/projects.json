@@ -31,15 +31,15 @@
     {
         "id": 3,
         "title": "Personal Website",
-        "description": "The site you're looking at right now. A living dashboard built with React, designed to feel like more than a static portfolio.",
+        "description": "The site you're looking at right now — a React single-page app with a hand-rolled design system and project write-ups stored as plain JSON.",
         "tags": [
             "React",
             "Vite",
             "CSS"
         ],
         "link": "#",
-        "thoughtProcess": "I wanted a space that felt distinctly 'me'. Most portfolio sites are static pages with a list of projects — functional, but lifeless. I wanted mine to feel like a living dashboard, something that updates itself and has personality. The dark theme with glassmorphism wasn't just an aesthetic choice; it's the environment I work in every day, and it felt right to bring that into how I present myself. I focused heavily on micro-interactions — hover states, scroll-triggered animations, smooth transitions — because those small details are what separate a page you glance at from one you actually enjoy exploring. The real-time age ticker and Last.fm integration were deliberate choices to make the site feel alive, like it's breathing even when I'm not actively updating it.",
-        "howItWorks": "The site is a Single Page Application built with React and Vite. It uses react-router for client-side navigation and CSS variables for a consistent theming system across every component. Real-time elements like the Age Ticker use useEffect hooks with setInterval to update every second, while the Music Card polls the Last.fm API to show what I'm currently listening to. The projects and timeline data are stored in JSON files, making it easy to add new entries without touching component code. The entire design system is built on custom CSS with glassmorphism effects, smooth fade-in-scroll animations triggered by Intersection Observer, and a responsive grid layout that adapts from desktop to mobile."
+        "thoughtProcess": "Earlier versions of this site tried to do too much — live widgets, dashboards, layouts that changed on every visit. Over time I stripped it back to what a portfolio actually needs: who I am, what I've built, and enough detail on each project to be worth reading. The current design takes its color palette directly from the hero photo — steel blue, charcoal, and muted green — so the whole page feels like it belongs to one image. Everything else is deliberately quiet: no component libraries, no animation frameworks, just custom CSS and a small set of shared design tokens.",
+        "howItWorks": "The site is a single-page application built with React and Vite, using react-router for client-side navigation. The theme lives entirely in CSS custom properties defined in one place, so every component — cards, buttons, headers — draws from the same palette and spacing scale. Project content is stored in a JSON file and rendered by shared components, which means adding a project is a data edit, not a code change. It deploys as a static build to GitHub Pages, with a small redirect shim to make client-side routes survive full-page loads."
     },
     {
         "id": 4,

@@ -4,15 +4,17 @@
      leave our palette alone. */
   color-scheme: dark;
 
-  /* Color Palette - Earthy Dark */
-  --bg-color: #211d1a;
-  --surface-color: #2c2723;
-  --surface-hover: #38312c;
-  --text-primary: #e8ded1;
-  --text-secondary: #a39b8e;
-  --accent-color: #d98a6c; /* Warm Peach/Orange */
-  --accent-glow: rgba(217, 138, 108, 0.4);
-  --border-color: #3b3530;
+  /* Color Palette - Slate & Steel Blue (sampled from the hero portrait:
+     charcoal shirt, steel-blue suit, muted sage water) */
+  --bg-color: #131920;
+  --surface-color: #1b242e;
+  --surface-hover: #232f3c;
+  --text-primary: #e8edf3;
+  --text-secondary: #97a6b6;
+  --accent-color: #7da3cd; /* Steel Blue */
+  --accent-glow: rgba(125, 163, 205, 0.35);
+  --sage-color: #8ba18c;   /* Muted green, used sparingly */
+  --border-color: #27333f;
   --overlay-light: rgba(255, 255, 255, 0.03);
   --overlay-medium: rgba(255, 255, 255, 0.08);
   
@@ -70,6 +72,28 @@ button {
   border: none;
   background: none;
   font-family: inherit;
+}
+
+/* Buttons (used by ProjectDetail and any future CTAs) */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: #10161d;
+  box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--accent-glow);
 }
 
 /* Scrollbar */

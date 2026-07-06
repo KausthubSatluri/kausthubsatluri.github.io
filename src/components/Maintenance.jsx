@@ -6,10 +6,9 @@ function Maintenance() {
     <div className="maintenance">
       <div className="maintenance__card fade-in">
         <div className="maintenance__icon" aria-hidden="true">🛠️</div>
-        <h1 className="maintenance__title">Under Repair</h1>
+        <h1 className="maintenance__title">Under Construction</h1>
         <p className="maintenance__text">
-          I'm currently rebuilding this site. Some things are still in pieces on
-          the floor — please check back soon.
+          I'm rebuilding this site. Check back soon.
         </p>
         <div className="maintenance__bar" aria-hidden="true">
           <span className="maintenance__bar-fill" />

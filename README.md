@@ -1,16 +1,56 @@
-# React + Vite
+# Kausthub Satluri — Personal Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio site built with **React 19 + Vite**, deployed to GitHub Pages.
 
-Currently, two official plugins are available:
+## Develop
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev      # local dev server (http://localhost:5173)
+npm run build    # production build → dist/
+npm run preview  # preview the production build locally
+npm run lint     # eslint
+```
 
-## React Compiler
+The dev server always shows the live site (the maintenance gate is bypassed in dev).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Project structure
 
-## Expanding the ESLint configuration
+```
+src/
+├── App.jsx              Routes + the "Under Repair" maintenance gate
+├── main.jsx             App entry point
+├── index.css           Global styles + design tokens (CSS variables) + buttons
+├── components/
+│   ├── Layout.jsx       Page shell: textured hero background + Header + Footer
+│   ├── Header.jsx       Sticky nav (Home / Projects)
+│   ├── Footer.jsx       Copyright + social links
+│   └── Maintenance.jsx  "Under Repair" screen
+├── pages/
+│   ├── Home.jsx         Hero + featured projects grid
+│   ├── Projects.jsx     Full project list
+│   └── ProjectDetail.jsx  Single project (/projects/:id)
+└── data/
+    └── projects.json   Project content — edit this to add/change projects
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Each component has a sibling `.css` file. Colors, spacing, and typography are
+driven by CSS variables defined at the top of `src/index.css`.
+
+## Content
+
+Projects are data-driven: add an entry to `src/data/projects.json` (with a
+unique numeric `id`) and it shows up on both the home page and `/projects`
+automatically — no component changes needed.
+
+## Maintenance mode
+
+`src/App.jsx` has a `MAINTENANCE_MODE` flag. While `true`, the live site shows
+the "Under Repair" screen. Flip it to `false` to go live. On the live site,
+`?preview` bypasses the gate (and remembers you); `?live` re-enables it.
+
+## Deployment
+
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the site
+and publishes `dist/` to GitHub Pages. `public/404.html` handles SPA routing so
+deep links (e.g. `/projects/2`) resolve correctly.
