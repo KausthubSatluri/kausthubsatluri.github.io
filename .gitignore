@@ -27,3 +27,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local/private working files
+.claude/
+CLAUDE.md
+LinkedIn Pfp 1.jpg
+dark_earthy_portfolio_1780081556713.png
