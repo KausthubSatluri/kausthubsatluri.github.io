@@ -7,7 +7,7 @@ import ProjectDetail from './pages/ProjectDetail';
 import Maintenance from './components/Maintenance';
 
 // Flip this to false when the site is ready to go live again.
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 // Decide whether to show the "Under Repair" screen.
 // - Local dev (npm run dev) never shows it, so you can keep working.
