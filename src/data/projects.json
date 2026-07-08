@@ -24,7 +24,7 @@
             "MCP",
             "Obsidian"
         ],
-        "link": "#",
+        "link": "https://github.com/KausthubSatluri/obsidian-mcp-server",
         "thoughtProcess": "I use Obsidian for everything — class notes, project planning, random ideas at 2 AM. But when I started using Claude Desktop, I kept wishing I could just say \"find my notes on dynamic programming\" or \"create a daily note for today\" without copy-pasting between apps. Anthropic had just released the Model Context Protocol, an open standard for connecting AI to external tools, and I realized I could build a bridge between Claude and my vault. The key design constraint was that it had to work without the Obsidian app running. I didn't want to depend on third-party REST API plugins or require Obsidian to be open in the background. Instead, I went straight to the file system — parsing the markdown and YAML frontmatter directly. Security was also top of mind: every file path gets validated to prevent directory traversal, and operations are strictly sandboxed to the vault directory.",
         "howItWorks": "The server is a TypeScript Node.js application that communicates with Claude Desktop over stdio using the MCP SDK. It exposes 20+ tools organized into six categories: vault discovery (auto-scanning common locations like Documents and iCloud), note CRUD operations, full-text and tag-based search, frontmatter metadata management, backlink and outlink graph traversal, and folder operations. Under the hood, it uses fast-glob for file searching, gray-matter for YAML frontmatter parsing, and Zod for runtime schema validation. When Claude calls a tool like search_notes, the server walks the vault directory, reads each .md file, parses its frontmatter and body, and returns structured results. The backlink engine scans for [[wiki-style links]] across the entire vault to build a reverse link map. All of this runs locally with zero network calls, keeping your notes completely private."
     },
@@ -37,7 +37,7 @@
             "Vite",
             "CSS"
         ],
-        "link": "#",
+        "link": "https://github.com/KausthubSatluri/kausthubsatluri.github.io",
         "thoughtProcess": "Earlier versions of this site tried to do too much — live widgets, dashboards, layouts that changed on every visit. Over time I stripped it back to what a portfolio actually needs: who I am, what I've built, and enough detail on each project to be worth reading. The current design takes its color palette directly from the hero photo — steel blue, charcoal, and muted green — so the whole page feels like it belongs to one image. Everything else is deliberately quiet: no component libraries, no animation frameworks, just custom CSS and a small set of shared design tokens.",
         "howItWorks": "The site is a single-page application built with React and Vite, using react-router for client-side navigation. The theme lives entirely in CSS custom properties defined in one place, so every component — cards, buttons, headers — draws from the same palette and spacing scale. Project content is stored in a JSON file and rendered by shared components, which means adding a project is a data edit, not a code change. It deploys as a static build to GitHub Pages, with a small redirect shim to make client-side routes survive full-page loads."
     },
@@ -67,5 +67,65 @@
         "link": "https://github.com/KausthubSatluri/quant-index-analytics",
         "thoughtProcess": "Quantitative finance education has a gatekeeping problem. Most resources either assume you already have a math PhD, or they oversimplify to the point of being useless. I wanted to find the middle ground — a resource that walks you through real statistical analysis of market indices, step by step, without dumbing it down but also without drowning you in notation. The goal was practical literacy: after going through this, you should be able to look at an index, compute its key statistics, understand what they mean, and use them to make informed observations. It's the resource I wished existed when I first got interested in markets.",
         "howItWorks": "The project is structured as a collection of educational modules built in HTML. It parses historical market data, applies core statistical methods — mean returns, standard deviation, correlation matrices, rolling averages — and presents the findings in a clean, readable format. Each module builds on the last, progressing from basic descriptive statistics to more advanced concepts like risk-adjusted returns and index comparison. The emphasis is on showing the work: every calculation is explained alongside its output, so learners understand not just the what but the why."
+    },
+    {
+        "id": 6,
+        "title": "Algo Trading Lab",
+        "description": "A GPU-accelerated reinforcement learning trading agent trained on SPY, alongside quantitative experiments on S&P 500 returns and dollar-cost averaging.",
+        "tags": [
+            "Python",
+            "PyTorch",
+            "Reinforcement Learning",
+            "Quant Finance"
+        ],
+        "link": "https://github.com/KausthubSatluri/algo-trading",
+        "images": [
+            {
+                "src": "/projects/algo-trading/evaluation_report.png",
+                "caption": "In-sample evaluation of the PPO agent's trading performance"
+            },
+            {
+                "src": "/projects/algo-trading/evaluation_report_oos.png",
+                "caption": "Out-of-sample results — the real test of whether the agent learned anything"
+            },
+            {
+                "src": "/projects/algo-trading/gpu_performance.png",
+                "caption": "Training throughput benchmarks from the vectorized GPU environment"
+            },
+            {
+                "src": "/projects/algo-trading/1000_in_S_P.png",
+                "caption": "Growth of $1,000 invested in the S&P 500 over time"
+            }
+        ],
+        "thoughtProcess": "This project started as a question: could I actually teach a machine to trade, or would it just memorize noise? Most retail \"AI trading\" content is either hand-wavy or outright fraudulent, so I wanted to build the whole pipeline myself and be honest about the results. That meant taking evaluation seriously — anyone can show a backtest that beats the market in-sample; the interesting question is what happens on data the agent has never seen. It also became a lesson in engineering for scale. Reinforcement learning is notoriously sample-hungry, and simulating one trading episode at a time on a CPU was hopelessly slow. Rewriting the market environment to run thousands of episodes in parallel on a GPU turned experiments that took hours into ones that took minutes, which changed how quickly I could iterate on ideas. Alongside the RL work, I kept a set of simpler quantitative studies — long-run S&P 500 return analysis and dollar-cost-averaging simulations — as a baseline reminder of what boring, passive investing already achieves.",
+        "howItWorks": "The core is a PPO (Proximal Policy Optimization) agent implemented in PyTorch with an actor-critic network and Generalized Advantage Estimation. Instead of stepping through one market simulation at a time, a custom vectorized stock environment batches 2048 parallel episodes per rollout entirely on the GPU, so both the environment dynamics and the policy updates stay on-device. Historical SPY data is pulled with yfinance and processed with pandas into the state features the agent observes. An autonomous training loop runs the full cycle — collect rollouts, compute advantages, update the policy — while logging win rate and profit against a buy-and-hold benchmark, and evaluation reports are generated separately for in-sample and out-of-sample periods to keep the results honest. A companion analysis module handles the classical side: computing long-horizon S&P 500 return statistics and simulating dollar-cost-averaging strategies."
+    },
+    {
+        "id": 7,
+        "title": "Jarvis",
+        "description": "A bounded-autonomy AI assistant built on OpenClaw — it acts on its own inside explicitly defined policy boundaries and checkpoints with you for everything else.",
+        "tags": [
+            "TypeScript",
+            "Node.js",
+            "AI Agents",
+            "Automation"
+        ],
+        "link": "https://github.com/KausthubSatluri/jarvis",
+        "thoughtProcess": "The current crop of AI assistants forces a bad choice: either they ask permission for everything and become exhausting, or they run fully autonomous and you're left hoping they don't do something you'd never have approved. I wanted a third option — an assistant with the same relationship to me that a trusted human assistant has to their principal. A good assistant knows what they're allowed to decide alone, what needs a quick sign-off, and what's simply off-limits, and that boundary is explicit rather than vibes-based. So I forked OpenClaw, an open multi-channel assistant platform, and built a bounded-autonomy layer on top of it. The core idea is that autonomy should be declared, not inferred: every domain of action gets a written policy, and the system routes each decision against those policies before acting. Over time, the boundary itself should adapt — if I keep approving the same kind of request, the assistant should learn to propose expanding its own autonomy there.",
+        "howItWorks": "Jarvis extends OpenClaw with a policy engine defined in a declarative AUTONOMY.yaml file, where each domain of activity specifies what the assistant may do autonomously, what requires approval, and what is forbidden outright. A decision-boundary classifier evaluates every intended action and routes it down one of those three paths. Approval requests are delivered as checkpoints over WhatsApp, so signing off on an action is as lightweight as replying to a message. A policy learner watches the history of approvals and rejections and suggests refinements to the autonomy boundaries based on observed preferences. Underneath, the OpenClaw platform provides the assistant chassis: multi-channel messaging across WhatsApp, Telegram, Slack, Discord, iMessage, and Teams, voice wake-word support, a Canvas workspace, and a gateway control plane, all running on Node 22+."
+    },
+    {
+        "id": 8,
+        "title": "Sampling Algorithms Research",
+        "description": "Research code testing variants of Langevin Monte Carlo — exploring how modifications to a classical sampling algorithm change convergence behavior.",
+        "tags": [
+            "Python",
+            "MCMC",
+            "Research",
+            "Applied Math"
+        ],
+        "link": "https://github.com/KausthubSatluri/Sampling-Research-Code",
+        "thoughtProcess": "Sampling from a complicated probability distribution is one of those problems that sounds abstract but sits underneath half of modern machine learning and computational statistics — Bayesian inference, generative models, molecular dynamics all reduce to it. Langevin Monte Carlo is a classical answer: follow the gradient of the log-density, add carefully scaled noise, and under the right conditions you converge to the target distribution. The research question I was exploring is what happens when you perturb that recipe — how do variations on the traditional Langevin dynamics affect how quickly and reliably the sampler converges, and on which kinds of target distributions do the trade-offs show up? Building the code myself, rather than using an off-the-shelf library, was the point: the experiments needed fine-grained control over every term in the update rule.",
+        "howItWorks": "The codebase implements a family of MCMC samplers built off traditional Langevin Monte Carlo, each variant modifying the discretized Langevin update in a controlled way. An experiment harness runs the samplers against benchmark target distributions and records convergence diagnostics, so different algorithms can be compared under identical conditions. The repository includes architecture documentation describing how the pieces fit together and a visualization pipeline for turning sampler trajectories into flow visualizations, which makes it easier to see qualitatively how each variant explores the target distribution."
     }
 ]

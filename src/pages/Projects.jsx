@@ -18,6 +18,11 @@ const Projects = () => {
                             to={`/projects/${project.id}`}
                             className="card-link-wrapper"
                         >
+                            {project.images && project.images.length > 0 && (
+                                <div className="card-thumb">
+                                    <img src={project.images[0].src} alt={project.title} loading="lazy" />
+                                </div>
+                            )}
                             <div className="card-content">
                                 <h2 className="project-title">{project.title}</h2>
                                 <p className="project-desc">{project.description}</p>

@@ -23,6 +23,7 @@ const ProjectDetail = () => {
     return (
         <div className="project-detail-page fade-in">
             <div className="container">
+                <div className="back-link-row">
                 <Link to="/projects" className="back-link">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19 12H5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -30,6 +31,7 @@ const ProjectDetail = () => {
                     </svg>
                     Back to Projects
                 </Link>
+                </div>
 
                 <header className="project-header">
                     <h1 className="project-title">{project.title}</h1>
@@ -40,6 +42,17 @@ const ProjectDetail = () => {
                     </div>
                     <p className="project-description">{project.description}</p>
                 </header>
+
+                {project.images && project.images.length > 0 && (
+                    <div className="project-gallery">
+                        {project.images.map((image, index) => (
+                            <figure key={index} className="gallery-item">
+                                <img src={image.src} alt={image.caption || project.title} loading="lazy" />
+                                {image.caption && <figcaption>{image.caption}</figcaption>}
+                            </figure>
+                        ))}
+                    </div>
+                )}
 
                 <div className="project-content">
                     <section className="detail-section">
